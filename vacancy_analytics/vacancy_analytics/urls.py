@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponseNotFound
 from django.urls import path, include
+from vacancy_analytics import settings
+from django.conf.urls.static import static
 
 
 def pageNotFound(request, exception):
@@ -28,3 +30,5 @@ urlpatterns = [
     path('', include('main_vacancy_analytics.urls')),
 ]
 handler404 = pageNotFound
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
