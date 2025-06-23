@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Аналитика по вакансиям</title>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'main_vacancy_analytics/css/index.css' %}">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <nav class="navbar navbar-expand-md bg-body-tertiary">
+                    <div class="container-fluid">
+                      <span  id="link_our_name">
+                      <a class="navbar-brand" href="{% url 'main' %}">
+                        <img src="{% static 'main_vacancy_analytics/img/cat_fish.png' %}" alt="Cat and fish" width="50" height="50">
+                      </a>
+                    </span>
+                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            {% for link in links %}
+                                {% if link.link_slug == current_link %}
+                                <li class="nav-item" id="{{ link.link_slug }}">
+                                    <a class="nav-link active" href="{% url link.path_name %}">
+                                    {{ link.link_name }}
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item" id="{{ link.link_slug }}">
+                                    <a class="nav-link" href="{% url link.path_name %}">
+                                    {{ link.link_name }}
+                                    </a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                      <form action="admin" id="linkAdmin"><button class="btn btn-outline-success" type="submit" >Админ-панель</button></form>
+                      </div>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <div class="lesson_page_container">
+                 {% block content %}
+                    {% endblock content %}
+
+
+                </div>
+            </main>
+            <footer id="footer">
+              <h1 class="h1_footer" id="h1_footer">Полезные ссылки</h1>
+              <div class="footer_container">
+                <div class="footer_links1">
+                  <h2 class="h2_footer" id="h2_footer">Полезные сайты:</h2>
+                  <ul class="ul_footer">
+                    <li id="link_openedu"><a href="https://www.djangoproject.com/" class="white_link">Django</a></li>
+                    <li id="link_elearn"><a href="https://getbootstrap.com/" class="white_link">Bootstrap</a></li>
+                  </ul>
+                  <h2 class="h2_footer" id="footer_images">Изображения:</h2>
+                  <ul class="ul_footer">
+                    <li><a class="white_link" href="https://ru.freepik.com/free-psd/hand-drawn-pet-background_273641283.htm#fromView=search&page=1&position=1&uuid=54a265ea-0ef1-4696-960b-5543667627cb&query=cat+fish">Источник иконки: www.freepik.com</a></li>
+                  </ul>
+                </div>
+                <div class="footer_links2">
+                  <h2 class="h2_footer" id="footer_about_us">О нас</h2>
+                  <p class="footer_p" id="footer_about_us_p1">Расскажем немного про себя. Команда «CaTFish» была создана в 2025 году для создания классных программных продуктов и участия в CTF соревнованиях</p>
+                  <p class="footer_p footer_p_last" id="footer_about_us_p2"></p>
+                  <ul class="ul_footer" id="footer_about_us_ul" >
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
+            </footer>
+        </div>
+        <script src="{% static 'main_vacancy_analytics/js/main.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
+</html>
