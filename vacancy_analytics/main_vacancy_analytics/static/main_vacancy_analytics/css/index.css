@@ -657,3 +657,9 @@ table.salary-table tr:nth-child(even) {
 table.salary-table tr.even-year {
   background-color: #e8e8e8 !important;
 }
+.centered {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+
+}
