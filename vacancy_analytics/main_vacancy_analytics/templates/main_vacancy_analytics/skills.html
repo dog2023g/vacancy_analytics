@@ -1,4 +1,29 @@
 {% extends 'main_vacancy_analytics/base.html' %}
 {% block content %}
-"Страница с навыками..."
+<h2 class="lesson_page_h2">Топ навыков по годам</h2>
+  <div class="img_lesson">
+    {% for image in skills_years_images %}
+      {% if image.text == 'skills_years' %}
+        <img src="{{ image.image.url }}" alt="Топ навыков по годам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Год</th>
+        <th>Навык</th>
+        <th>Частота</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in skills_years %}
+        <tr {% if item.year|divisibleby:"2" %}class="even-year"{% endif %}>
+          <td>{{ item.year }}</td>
+          <td>{{ item.skill }}</td>
+          <td>{{ item.frequency }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock content %}

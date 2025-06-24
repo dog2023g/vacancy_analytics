@@ -1,4 +1,130 @@
 {% extends 'main_vacancy_analytics/base.html' %}
 {% block content %}
-"Страница со статистикой..."
+  <h2 class="lesson_page_h2">Динамика уровня зарплат по годам</h2>
+  <div class="img_lesson">
+    {% for image in salary_years_images %}
+      {% if image.text == 'g_salary_years' %}
+        <img src="{{ image.image.url }}" alt="Динамика зарплат по годам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Год</th>
+        <th>Средняя зарплата</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in salary_years %}
+        <tr>
+          <td>{{ item.year }}</td>
+          <td>{{ item.average_salary }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="lesson_page_h2">Динамика количества вакансий по годам</h2>
+  <div class="img_lesson">
+    {% for image in count_years_images %}
+      {% if image.text == 'g_count_years' %}
+        <img src="{{ image.image.url }}" alt="Динамика количества вакансий по годам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Год</th>
+        <th>Количество вакансий</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in count_years %}
+        <tr>
+          <td>{{ item.year }}</td>
+          <td>{{ item.average_salary }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="lesson_page_h2">Средняя зарплата по городам</h2>
+  <div class="img_lesson">
+    {% for image in salary_cities_images %}
+      {% if image.text == 'g_salary_cities' %}
+        <img src="{{ image.image.url }}" alt="Средняя зарплата по городам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Город</th>
+        <th>Средняя зарплата</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in salary_cities %}
+        <tr>
+          <td>{{ item.city }}</td>
+          <td>{{ item.average_salary }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="lesson_page_h2">Доля вакансий по городам</h2>
+  <div class="img_lesson">
+    {% for image in count_cities_images %}
+      {% if image.text == 'g_count_cities' %}
+        <img src="{{ image.image.url }}" alt="Доля вакансий по городам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Город</th>
+        <th>Доля вакансий</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in count_cities %}
+        <tr>
+          <td>{{ item.city }}</td>
+          <td>{{ item.share }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="lesson_page_h2">Топ навыков по годам</h2>
+  <div class="img_lesson">
+    {% for image in skills_years_images %}
+      {% if image.text == 'g_skills_years' %}
+        <img src="{{ image.image.url }}" alt="Топ навыков по годам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Год</th>
+        <th>Навык</th>
+        <th>Частота</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in skills_years %}
+        <tr {% if item.year|divisibleby:"2" %}class="even-year"{% endif %}>
+          <td>{{ item.year }}</td>
+          <td>{{ item.skill }}</td>
+          <td>{{ item.frequency }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
 {% endblock content %}

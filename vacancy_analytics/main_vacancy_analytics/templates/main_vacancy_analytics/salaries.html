@@ -1,4 +1,52 @@
 {% extends 'main_vacancy_analytics/base.html' %}
 {% block content %}
-"Страница о востребованности..."
+<h2 class="lesson_page_h2">Динамика уровня зарплат по годам</h2>
+  <div class="img_lesson">
+    {% for image in salary_years_images %}
+      {% if image.text == 'salary_years' %}
+        <img src="{{ image.image.url }}" alt="Динамика зарплат по годам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Год</th>
+        <th>Средняя зарплата</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in salary_years %}
+        <tr>
+          <td>{{ item.year }}</td>
+          <td>{{ item.average_salary }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="lesson_page_h2">Динамика количества вакансий по годам</h2>
+  <div class="img_lesson">
+    {% for image in count_years_images %}
+      {% if image.text == 'count_years' %}
+        <img src="{{ image.image.url }}" alt="Динамика количества вакансий по годам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Год</th>
+        <th>Количество вакансий</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in count_years %}
+        <tr>
+          <td>{{ item.year }}</td>
+          <td>{{ item.average_salary }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock content %}

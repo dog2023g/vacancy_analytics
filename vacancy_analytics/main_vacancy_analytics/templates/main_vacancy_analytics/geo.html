@@ -1,4 +1,52 @@
 {% extends 'main_vacancy_analytics/base.html' %}
 {% block content %}
-"Страница о географии..."
+<h2 class="lesson_page_h2">Средняя зарплата по городам</h2>
+  <div class="img_lesson">
+    {% for image in salary_cities_images %}
+      {% if image.text == 'salary_cities' %}
+        <img src="{{ image.image.url }}" alt="Средняя зарплата по городам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Город</th>
+        <th>Средняя зарплата</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in salary_cities %}
+        <tr>
+          <td>{{ item.city }}</td>
+          <td>{{ item.average_salary }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="lesson_page_h2">Доля вакансий по городам</h2>
+  <div class="img_lesson">
+    {% for image in count_cities_images %}
+      {% if image.text == 'count_cities' %}
+        <img src="{{ image.image.url }}" alt="Доля вакансий по городам">
+      {% endif %}
+    {% endfor %}
+  </div>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Город</th>
+        <th>Доля вакансий</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in count_cities %}
+        <tr>
+          <td>{{ item.city }}</td>
+          <td>{{ item.share }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock content %}

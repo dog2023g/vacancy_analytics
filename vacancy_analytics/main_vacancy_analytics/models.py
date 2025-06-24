@@ -72,7 +72,7 @@ class GeneralCitySalary(models.Model):
     class Meta:
         verbose_name = 'Общая статистика средней зарплаты по городам'
         verbose_name_plural = 'Общая статистика средней зарплаты по городам'
-        ordering = ['city']
+        ordering = ['-average_salary']
 
 
 class GeneralCityShare(models.Model):
@@ -90,7 +90,7 @@ class GeneralCityShare(models.Model):
     class Meta:
         verbose_name = 'Общая статистика доли вакансий по городам'
         verbose_name_plural = 'Общая статистика доли вакансий по городам'
-        ordering = ['city']
+        ordering = ['-share']
 
 
 class GeneralSkillFrequency(models.Model):
@@ -111,7 +111,7 @@ class GeneralSkillFrequency(models.Model):
     class Meta:
         verbose_name = 'Общая статистика топ навыков по годам'
         verbose_name_plural = 'Общая статистика топ навыков по годам'
-        ordering = ['year', 'frequency']
+        ordering = ['year', '-frequency']
 
 
 class SalariesYear(models.Model):
@@ -165,7 +165,7 @@ class CitySalary(models.Model):
     class Meta:
         verbose_name = 'Статистика средней зарплаты по городам для данной вакансии'
         verbose_name_plural = 'Статистика средней зарплаты по городам для данной вакансии'
-        ordering = ['city']
+        ordering = ['-average_salary']
 
 
 class CityShare(models.Model):
@@ -183,7 +183,7 @@ class CityShare(models.Model):
     class Meta:
         verbose_name = 'Статистика доли вакансий по городам для данной вакансии'
         verbose_name_plural = 'Статистика доли вакансий по городам для данной вакансии'
-        ordering = ['city']
+        ordering = ['-share']
 
 
 class SkillFrequency(models.Model):
@@ -204,4 +204,4 @@ class SkillFrequency(models.Model):
     class Meta:
         verbose_name = 'Статистика топ навыков по годам для данной вакансии'
         verbose_name_plural = 'Статистика топ навыков по годам для данной вакансии'
-        ordering = ['year', 'frequency']
+        ordering = ['year', '-frequency']
